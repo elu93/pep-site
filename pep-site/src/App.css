@@ -40,3 +40,81 @@
 .read-the-docs {
   color: #888;
 }
+
+/* ===== MOBILE NAV ===== */
+.mobile-toggle {
+  display: none;
+  background: transparent;
+  border: none;
+  color: var(--text);
+  font-size: 1.25rem;
+  padding: 0.35rem;
+  cursor: pointer;
+}
+
+.mobile-toggle .hamburger {
+  font-size: 1.25rem;
+  line-height: 1;
+}
+
+.mobile-menu {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 64px;
+  background: var(--bg-elevated);
+  border-top: 1px solid var(--border-subtle);
+  padding: 1rem;
+  z-index: 1200;
+}
+
+.mobile-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.mobile-link {
+  color: var(--text);
+  text-decoration: none;
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+}
+
+.mobile-link:hover,
+.mobile-link:focus {
+  background: rgba(255,255,255,0.03);
+}
+
+/* make sure the top-nav-left hides on small screens (index.css already does this at 900px)
+   but ensure toggle is visible and accessible */
+@media (max-width: 900px) {
+  .mobile-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+/* small screens: stack the top nav and show mobile menu instead of left links */
+@media (max-width: 640px) {
+  .top-nav {
+    position: relative;
+  }
+  .top-nav-left {
+    display: none;
+  }
+}
+
+/* Focus styles for keyboard users */
+:focus {
+  outline: 3px solid rgba(100, 115, 255, 0.12);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+    animation: none !important;
+  }
+}

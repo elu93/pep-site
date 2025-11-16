@@ -1,4 +1,5 @@
 import { Routes, Route, Link } from "react-router-dom";
+import { useState } from "react";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import SuccessStories from "./pages/SuccessStories";
@@ -14,16 +15,18 @@ import pepprLogo from "./assets/LOGO.png";
 
 
 function App() {
+  const [menuOpen, setMenuOpen] = useState(false);
+
   return (
     <div className="app app-dark">
       <header className="top-nav-wrapper">
   <div className="top-nav">
     {/* LEFT: nav links */}
-    <nav className="top-nav-left">
-      <Link to="/success-stories" className="nav-link">
+    <nav className="top-nav-left" role="navigation" aria-label="Primary">
+      <Link to="/success-stories" className="nav-link" onClick={() => setMenuOpen(false)}>
         Success Stories
       </Link>
-      <Link to="/about" className="nav-link">
+      <Link to="/about" className="nav-link" onClick={() => setMenuOpen(false)}>
         About Us
       </Link>
     </nav>
@@ -45,10 +48,30 @@ function App() {
       <button className="btn btn-amazon">
   Call Adam!
 </button>
+      {/* Mobile menu toggle (visible via CSS at small widths) */}
+      <button
+        className="mobile-toggle"
+        aria-label={menuOpen ? 'Close menu' : 'Open menu'}
+        aria-expanded={menuOpen}
+        onClick={() => setMenuOpen((s) => !s)}
+      >
+        <span className="hamburger" aria-hidden>☰</span>
+      </button>
 
     </div>
   </div>
 </header>
+
+{menuOpen && (
+  <div className="mobile-menu" role="dialog" aria-modal="true">
+    <nav className="mobile-nav">
+      <Link to="/" className="mobile-link" onClick={() => setMenuOpen(false)}>Home</Link>
+      <Link to="/success-stories" className="mobile-link" onClick={() => setMenuOpen(false)}>Success Stories</Link>
+      <Link to="/about" className="mobile-link" onClick={() => setMenuOpen(false)}>About Us</Link>
+      <Link to="/contact" className="mobile-link" onClick={() => setMenuOpen(false)}>Contact</Link>
+    </nav>
+  </div>
+)}
 
 
       <main className="main-shell">
