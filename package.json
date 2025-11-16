@@ -1,6 +1,8 @@
 {
   "scripts": {
-    "dev": "npm --prefix pep-site run dev"
+    "dev": "npm --prefix pep-site run dev",
+    "build": "rm -rf dist && npm --prefix pep-site run build && mkdir -p dist && cp -a pep-site/dist/. dist/",
+    "build:pep-site": "npm --prefix pep-site run build"
   },
   "dependencies": {}
 }

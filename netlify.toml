@@ -1,0 +1,12 @@
+## Netlify configuration to build the Vite app inside the `pep-site` subfolder.
+[build]
+  # Build from the 'pep-site' folder so Netlify runs installs/builds there
+  base = "pep-site"
+  # Command to run inside the base directory
+  command = "npm run build"
+  # Publish directory (relative to the base directory)
+  publish = "dist"
+
+[context]
+  # Optional: set environment values here or change via Netlify UI
+  # NODE_VERSION = "18"
