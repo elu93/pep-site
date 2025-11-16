@@ -1,0 +1,6 @@
+{
+  "scripts": {
+    "dev": "npm --prefix pep-site run dev"
+  },
+  "dependencies": {}
+}

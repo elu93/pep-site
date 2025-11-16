@@ -1,0 +1,283 @@
+/* ===== BASE ===== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+:root {
+  --bg: #050505;
+  --bg-elevated: #101010;
+  --text: #f9fafb;
+  --muted: #9ca3af;
+  --accent: #ffffff;
+  --border-subtle: #27272a;
+ --amazon-blue: #0a369d;
+;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
+    "Segoe UI", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+
+button {
+  font-family: inherit;
+}
+
+/* ===== APP LAYOUT ===== */
+.app-dark {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg);
+}
+
+.main-shell {
+  flex: 1;
+}
+
+/* ===== TOP NAV PILL ===== */
+.top-nav-wrapper {
+  padding: 0.75rem 1.25rem;
+}
+
+.top-nav {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0.65rem 1.25rem;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  backdrop-filter: blur(14px);
+}
+
+.top-nav-left,
+.top-nav-right {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.nav-link {
+  border: none;
+  background: transparent;
+  color: var(--text);
+  font-size: 0.9rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  padding: 0.3rem 0;
+  position: relative;
+}
+
+.nav-link:hover {
+  opacity: 0.8;
+}
+
+.nav-count {
+  font-size: 0.7rem;
+  margin-left: 0.25rem;
+  opacity: 0.7;
+}
+
+.logo-wordmark {
+  font-family: "Georgia", "Times New Roman", serif;
+  font-size: 1.2rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.top-nav-center {
+  text-align: center;
+}
+
+.top-nav-right {
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+.nav-region {
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.btn.btn-amazon {
+  border-radius: 999px;
+  border: none;
+  padding: 0.55rem 1.4rem;
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+  color: #0a2540; /* dark navy text */
+  background: linear-gradient(145deg, #7ddcff, #4bb8ff);
+  box-shadow:
+    0 4px 12px rgba(0, 150, 255, 0.25),
+    0 2px 4px rgba(0, 150, 255, 0.15);
+  transition: all 0.18s ease;
+}
+
+
+.btn.btn-amazon:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    0 6px 18px rgba(0, 150, 255, 0.35),
+    0 3px 6px rgba(0, 150, 255, 0.2);
+}
+
+
+
+/* ===== HERO SECTION ===== */
+.hero {
+  border-top: 1px solid var(--border-subtle);
+  padding: 2.5rem 1.25rem 4rem;
+  background: radial-gradient(circle at top, #18181b 0, #050505 52%);
+}
+
+
+.hero-inner {
+  max-width: 1120px;
+  margin: 0 auto;
+  position: relative;
+  padding: 3rem 0 3.5rem;
+  display: grid;
+  grid-template-columns: 120px minmax(0, 1fr);
+  gap: 2rem;
+  align-items: center;
+}
+
+/* vertical dotted grid effect behind the text */
+.hero-grid-overlay {
+  position: absolute;
+  inset: 0;
+  background-image: repeating-linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0.06) 0,
+    rgba(255, 255, 255, 0.06) 1px,
+    transparent 1px,
+    transparent 160px
+  );
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.hero-arrow-col {
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.hero-arrow {
+  font-size: 4rem;
+  line-height: 1;
+  color: var(--accent);
+}
+
+/* Hero text */
+.hero-copy-col {
+  z-index: 1;
+}
+
+.hero-tagline {
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: 0.75rem;
+  color: var(--muted);
+  margin: 0 0 0.9rem;
+}
+
+.hero-title {
+  margin: 0;
+  font-size: clamp(2.4rem, 5vw, 3.8rem);
+  line-height: 0.95;
+  font-weight: 800;
+}
+
+.hero-highlight {
+  padding: 0.2rem 0.45rem;
+  border-radius: 0.5rem;
+  background: #ffffff;
+  color: #000000;
+}
+
+/* ===== FOOTER ===== */
+.footer {
+  border-top: 1px solid #18181b;
+  padding: 1.5rem 1.25rem 2rem;
+  font-size: 0.8rem;
+  color: var(--muted);
+  text-align: center;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 900px) {
+  .top-nav {
+    padding-inline: 1rem;
+    gap: 1rem;
+  }
+
+  .top-nav-left {
+    display: none; /* hide left nav on small screens for now */
+  }
+
+  .hero-inner {
+    grid-template-columns: 60px minmax(0, 1fr);
+    padding-top: 2.25rem;
+  }
+
+  .hero-title {
+    font-size: clamp(2rem, 7vw, 3.1rem);
+  }
+}
+
+@media (max-width: 640px) {
+  .top-nav-wrapper {
+    padding-inline: 0.75rem;
+  }
+
+  .top-nav {
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  .hero-inner {
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: 1.5rem;
+  }
+
+  .hero-arrow-col {
+    justify-content: flex-start;
+  }
+}
+/* Logo link + image */
+.logo-link {
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo-img {
+  height: 26px;      /* tweak this to fit your logo */
+  object-fit: contain;
+}
+
+/* If you use text logo instead of an image, this is still fine: */
+.logo-wordmark {
+  font-family: "Georgia", "Times New Roman", serif;
+  font-size: 1.2rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.logo-img {
+  height: 3rem; /* equivalent to ~48px */
+  object-fit: contain;
+}
